@@ -1,0 +1,1 @@
+enum AvailableStatus {New, InProgress, Completed, Cancelled}
