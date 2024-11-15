@@ -4,18 +4,19 @@ class AssetPathsAndUrls {
 
   static  RegExp emailChecker = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-  static const String loginURL = 'https://task.teamrabbil.com/api/v1/login';
-  static const String signUpURL = 'https://task.teamrabbil.com/api/v1/registration';
-  static const String newTaskURL = 'https://task.teamrabbil.com/api/v1/listTaskByStatus/New';
-  static const String completedTaskURL = 'https://task.teamrabbil.com/api/v1/listTaskByStatus/Completed';
-  static const String cancelledTaskURL = 'https://task.teamrabbil.com/api/v1/listTaskByStatus/Cancelled';
-  static const String inProgressTaskURL = 'https://task.teamrabbil.com/api/v1/listTaskByStatus/Progress';
-  static const String createTaskURL = 'https://task.teamrabbil.com/api/v1/createTask';
-  static const String taskStatusCountURL = 'https://task.teamrabbil.com/api/v1/taskStatusCount';
-  static const String deleteTaskURL = 'https://task.teamrabbil.com/api/v1/deleteTask/';
-  static const String updateTaskStatus = 'https://task.teamrabbil.com/api/v1/updateTaskStatus/';
-  static const String updateProfile = 'https://task.teamrabbil.com/api/v1/profileUpdate';
-  static const String recoveryEmailURL = 'https://task.teamrabbil.com/api/v1/RecoverVerifyEmail/';
-  static const String recoveryOTPURL = 'https://task.teamrabbil.com/api/v1/RecoverVerifyOTP/';
-  static const String resetPasswordURL = 'https://task.teamrabbil.com/api/v1/RecoverResetPass';
+  static const String _baseURL = "http://35.73.30.144:2005/api/v1";
+  static const String loginURL = '$_baseURL/Login';
+  static const String signUpURL = '$_baseURL/Registration';
+  static const String newTaskURL = '$_baseURL/listTaskByStatus/New';
+  static const String completedTaskURL = '$_baseURL/listTaskByStatus/Completed';
+  static const String cancelledTaskURL = '$_baseURL/listTaskByStatus/Cancelled';
+  static const String inProgressTaskURL = '$_baseURL/listTaskByStatus/Progress';
+  static const String createTaskURL = '$_baseURL/createTask';
+  static const String taskStatusCountURL = '$_baseURL/taskStatusCount';
+  static const String deleteTaskURL = '$_baseURL/deleteTask/';
+  static const String updateTaskStatus = '$_baseURL/updateTaskStatus/';
+  static const String updateProfile = '$_baseURL/ProfileUpdate';
+  static const String recoveryEmailURL = '$_baseURL/RecoverVerifyEmail/';
+  static const String recoveryOTPURL = '$_baseURL/RecoverVerifyOTP/';
+  static const String resetPasswordURL = '$_baseURL/RecoverResetPass';
 }

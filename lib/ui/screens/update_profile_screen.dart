@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:task_manager_with_get_x/controllers/authentication_controller.dart';
 import 'package:task_manager_with_get_x/controllers/update_profile_controller.dart';
 import 'package:task_manager_with_get_x/ui/widgets/background_widget.dart';
@@ -24,7 +24,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final TextEditingController _lasNameTEc = TextEditingController();
   final TextEditingController _mobileTEc = TextEditingController();
   final TextEditingController _passwordTEc = TextEditingController();
-  XFile? _selectedImage;
+  //XFile? _selectedImage;
 
   @override
   void initState() {
@@ -36,21 +36,21 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     super.initState();
   }
 
-  void _onPressedUpdateButton() {
-    if (_formKey.currentState!.validate() == true) {
-      File file = File(_selectedImage!.path);
-
-      Map<String, dynamic> updateData = {
-        "email": _emailTEc.text.trim(),
-        "firstName": _firstNameTEc.text.trim(),
-        "lastName": _lasNameTEc.text.trim(),
-        "mobile": _mobileTEc.text.trim(),
-        "password": _passwordTEc.text.trim(),
-        "photo" : base64Encode(file.readAsBytesSync())
-      };
-      _updateRequest(updateData);
-    }
-  }
+  // void _onPressedUpdateButton() {
+  //   if (_formKey.currentState!.validate() == true) {
+  //     File file = File(_selectedImage!.path);
+  //
+  //     Map<String, dynamic> updateData = {
+  //       "email": _emailTEc.text.trim(),
+  //       "firstName": _firstNameTEc.text.trim(),
+  //       "lastName": _lasNameTEc.text.trim(),
+  //       "mobile": _mobileTEc.text.trim(),
+  //       "password": _passwordTEc.text.trim(),
+  //       "photo" : base64Encode(file.readAsBytesSync())
+  //     };
+  //     _updateRequest(updateData);
+  //   }
+  // }
 
   Future<void> _updateRequest(Map<String, dynamic> updateData) async {
     bool result = await Get.find<UpdateProfileController>()
@@ -135,7 +135,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           visible:  updateProfileController.updateInProgress == false,
                           replacement: const Center(child: CircularProgressIndicator(),),
                           child: ElevatedButton(
-                            onPressed: _onPressedUpdateButton,
+                            // onPressed: _onPressedUpdateButton,
+                            onPressed: (){},
                             child: const Icon(Icons.arrow_circle_right_outlined),
                           ),
                         );
@@ -171,7 +172,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   GestureDetector _buildPhotoPicker() {
     return GestureDetector(
-      onTap: chooseProfileImage,
+      //onTap: chooseProfileImage,
       child: Container(
         width: double.maxFinite,
         height: 48,
@@ -205,25 +206,25 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
             const SizedBox(width: 10,),
 
-            Expanded(child: Text(_selectedImage?.name ?? "NO Image Selected",maxLines: 1, style: const TextStyle(overflow: TextOverflow.ellipsis),),),
+            //Expanded(child: Text(_selectedImage?.name ?? "NO Image Selected",maxLines: 1, style: const TextStyle(overflow: TextOverflow.ellipsis),),),
           ],
         ),
       ),
     );
   }
 
-  Future<void> chooseProfileImage () async {
-    final imagePicker = ImagePicker();
-    final XFile? result = await imagePicker.pickImage(source: ImageSource.camera);
-
-    if(result != null) {
-      _selectedImage = result;
-      if(mounted) {
-        setState(() {
-        });
-      }
-    }
-  }
+  // Future<void> chooseProfileImage () async {
+  //   final imagePicker = ImagePicker();
+  //   final XFile? result = await imagePicker.pickImage(source: ImageSource.camera);
+  //
+  //   if(result != null) {
+  //     _selectedImage = result;
+  //     if(mounted) {
+  //       setState(() {
+  //       });
+  //     }
+  //   }
+  // }
 
   void _clearTextFields () {
     _emailTEc.clear();
