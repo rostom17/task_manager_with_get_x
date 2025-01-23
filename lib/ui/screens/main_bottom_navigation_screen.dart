@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:task_manager_with_get_x/controllers/navigation_screen_controller.dart';
 import 'package:task_manager_with_get_x/ui/screens/create_task_screen.dart';
 import 'package:task_manager_with_get_x/ui/screens/new_task_screen.dart';
@@ -35,33 +36,31 @@ class _MainBottomNavigationScreenState
         builder: (navigationScreenController) {
       return Scaffold(
         appBar: appBarWidget(context),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            navigationScreenController.renderScreen(index);
-          },
-          selectedItemColor: Colors.white,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-          iconSize: 30,
-          elevation: 2,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.green.shade500,
-          selectedIconTheme:
-              const IconThemeData(color: Colors.white70),
-          unselectedIconTheme:
-              const IconThemeData(color: Color.fromARGB(255, 16, 15, 15)),
-          currentIndex: navigationScreenController.currentIndex,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list_alt_outlined), label: "All"),
-            BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.pencil_ellipsis_rectangle), label: "New"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.incomplete_circle_outlined), label: "Progress"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.done_outline_outlined), label: "Completed"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.cancel_presentation_outlined), label: "Cancelled"),
-          ],
+        bottomNavigationBar: Padding(
+          padding:
+              const EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: NavigationBar(
+              selectedIndex: navigationScreenController.currentIndex,
+              onDestinationSelected: (index) =>
+                  navigationScreenController.renderScreen(index),
+              height: 70,
+              destinations: const [
+                NavigationDestination(
+                    icon: Icon(CupertinoIcons.doc_text), label: "All"),
+                NavigationDestination(
+                    icon: Icon(CupertinoIcons.add_circled), label: "New"),
+                NavigationDestination(
+                    icon: Icon(CupertinoIcons.memories), label: "Progress"),
+                NavigationDestination(
+                    icon: Icon(CupertinoIcons.checkmark_seal),
+                    label: "Completed"),
+                NavigationDestination(
+                    icon: Icon(CupertinoIcons.xmark_seal), label: "Cancelled"),
+              ],
+            ),
+          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
