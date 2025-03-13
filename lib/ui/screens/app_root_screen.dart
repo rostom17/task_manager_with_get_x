@@ -21,13 +21,15 @@ class _AppRootScreenState extends State<AppRootScreen> {
     super.initState();
   }
 
-  Future<void> _moveToNextScreen () async {
-    await Future.delayed (const Duration (seconds: 2));
+  Future<void> _moveToNextScreen() async {
+    await Future.delayed(const Duration(seconds: 2));
 
     bool isLoggedIn = await AuthenticationController.checkAuthenticationState();
 
-    if(mounted) {
-      isLoggedIn ? Get.offAll(()=> const MainBottomNavigationScreen()) : Get.off( ()=> const LogInScreen());
+    if (mounted) {
+      isLoggedIn
+          ? Get.offAll(() => const MainBottomNavigationScreen())
+          : Get.off(() => const LogInScreen());
     }
   }
 
@@ -35,7 +37,10 @@ class _AppRootScreenState extends State<AppRootScreen> {
   Widget build(BuildContext context) {
     return BackgroundWidget(
       backGroundChildWidget: Center(
-        child: SvgPicture.asset(AssetPathsAndUrls.logoSvg),
+        child: SizedBox(
+            height: 150,
+            width: 150,
+            child: Image.asset(AssetPathsAndUrls.appIcon)),
       ),
     );
   }

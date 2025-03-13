@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager_with_get_x/controllers/delete_task_controller.dart';
@@ -35,7 +36,7 @@ class _TaskWidgetState extends State<TaskWidget> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      color: Colors.green.shade50,
+      color: const Color.fromARGB(255, 198, 135, 213),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -50,6 +51,9 @@ class _TaskWidgetState extends State<TaskWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     widget.title,
                     style: TextStyle(
@@ -72,10 +76,8 @@ class _TaskWidgetState extends State<TaskWidget> {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text("Date: ${widget.datTime.replaceAll('-', '/')}", style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  //Text("Date: ${widget.datTime.replaceAll('-', '/')}", style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+
                   Chip(
                     label: Text(
                       widget.status,
@@ -84,7 +86,6 @@ class _TaskWidgetState extends State<TaskWidget> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    //color: widget.status == 'New' ? Colors.green : Colors.orange,
                     backgroundColor: getChipColor(widget.status),
                   ),
                 ],
@@ -96,9 +97,9 @@ class _TaskWidgetState extends State<TaskWidget> {
                 IconButton(
                   onPressed: onPressedUpdateButton,
                   icon: const Icon(
-                    Icons.edit_calendar_outlined,
-                    color: Colors.green,
-                    size: 26,
+                    CupertinoIcons.check_mark_circled,
+                    color: Color.fromARGB(255, 29, 27, 141),
+                    size: 30,
                   ),
                 ),
                 GetBuilder<DeleteTaskController>(
@@ -108,8 +109,8 @@ class _TaskWidgetState extends State<TaskWidget> {
                         onPressedDeleteButton();
                       },
                       icon: const Icon(
-                        Icons.delete_forever_outlined,
-                        color: Colors.red,
+                        CupertinoIcons.delete,
+                        color: Color.fromARGB(255, 128, 20, 20),
                         size: 29,
                       ),
                     );

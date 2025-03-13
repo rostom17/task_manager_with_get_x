@@ -38,7 +38,7 @@ class _MainBottomNavigationScreenState
         appBar: appBarWidget(context),
         bottomNavigationBar: Padding(
           padding:
-              const EdgeInsets.only(bottom: 10, left: 10, right: 10, top: 0),
+              const EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 10),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: NavigationBar(
@@ -56,8 +56,8 @@ class _MainBottomNavigationScreenState
                 NavigationDestination(
                     icon: Icon(CupertinoIcons.checkmark_seal),
                     label: "Completed"),
-                NavigationDestination(
-                    icon: Icon(CupertinoIcons.xmark_seal), label: "Cancelled"),
+                // NavigationDestination(
+                //     icon: Icon(CupertinoIcons.xmark_seal), label: "Cancelled"),
               ],
             ),
           ),
@@ -65,7 +65,7 @@ class _MainBottomNavigationScreenState
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TaskStatusCountWidget(),
+            //const TaskStatusCountWidget(),
             Expanded(
                 child: _renderScreens[navigationScreenController.currentIndex]),
           ],
